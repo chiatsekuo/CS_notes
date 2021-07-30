@@ -69,7 +69,7 @@ Display the last n lines of a file - `tail -n filename`
 
 Filtering text with **grep** - `cat filename | grep output` - display lines with *output* in the filename.
 
-**Find & Replace** - `sed s/mysql/MySQL/g /etc/snort/snort.conf > snort2.conf` - sed (stream edit); s (search); g(replace globally); It means that `mysql` in the `snort.conf` file is replaced by `MySQL` and the result is saved in a new file: `snort2.conf`.
+**Find & Replace** - `sed s/mysql/MySQL/g /etc/snort/snort.conf > snort2.conf` - `sed` (stream edit); `s` (search); `g` (replace globally); It means that `mysql` in the `snort.conf` file is replaced by `MySQL` and the result is saved in a new file: `snort2.conf`.
 
 `more` - displays a page of a file at a time. Enter to go on.
 
@@ -77,5 +77,31 @@ Filtering text with **grep** - `cat filename | grep output` - display lines with
 
 ## Network Analysis & Management
 
-left at p.71 Networks
+`ifconfig`
+
+`iwconfig` - check wireless network devices
+
+Change IP address - `ifconfig eth0 192.168.181.115`
+
+Change Network Mask & Broadcast Address - `ifconfig eth0 192.168.181.115 netmask 255.255.0.0 broadcast 192.168.1.255`
+
+Change MAC address:
+
+- `ifconfig eth0 down`
+- `ifconfig eth0 hw ether 00:11:22:33:44:55`
+- `ifconfig eth0 up`
+
+Examine DNS with `dig` - `dig google.com nx` - `nx` stands for name server. `mx` option is for *mail exchange server*.
+
+DNS server is stored in `/etc/resolv.conf`
+
+- If you’re using a DHCP address and the DHCP server provides a DNS setting, the DHCP server will replace the contents of the file when it renews the DHCP address.
+
+Mapping your own IP addresses with `/etc/hosts` file
+
+## Adding & Removing Software
+
+
+
+left at p.82 Software
 
