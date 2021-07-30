@@ -101,7 +101,46 @@ Mapping your own IP addresses with `/etc/hosts` file
 
 ## Adding & Removing Software
 
+apt (Advanced Packaging Tool)
+
+Search for a package - `apt-cache search packageName`
+
+Adding Software - `apt-get istall packageName`
+
+Removing Software - `apt-get remove packageName` - Notice that the configuration file is not removed.
+
+Removing Software together with its config file - `apt-get purge snort`
+
+Update - update the list of packages available for download from the repository - `apt-get update`
+
+Upgrade - upgrade the package to the latest version in the repository - `apt-get upgrade`
+
+Adding repositories to `sources.list` file from `/etc/apt/`
+
+`git clone`
+
+## File & Directory Permissions
+
+Each new user must be added to a group in order to inherit the permissions of that group.
+
+Each file & directory must be allocated a particular level of permission.
+
+- Read
+- Write
+- Execute (but not necessarily view or edit it)
+
+Granting ownership to an individual user - `chown bob /tmp/bobsfile`
+
+Granting ownership to a group - ` chgrp groupName fileName`
+
+`ls -l` - long listing
+
+- Ex: `drwxr-xr-x` 
+  - The first character indicates the file type (`d` for directory; `-` for file)
+  - Three sets (**owner**; **group**; **all other users**) of three characters (r, w, x)
+  - If any r, w, or x is replaced with a dash (-), then the respective permission hasn’t been given
 
 
-left at p.82 Software
+
+left at p.97 Changing Permissions
 
