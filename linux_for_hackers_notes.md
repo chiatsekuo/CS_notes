@@ -29,7 +29,7 @@ single dash (-) before single-letter options, ex: -h
 
 `which` - returns the location of the binaries in the PATH variable in Linux. Ex: `which aircrack-ng`
 
-`find` *directory options expression*. ex: `find / -type f -name apache2` means search **apache** in the **root** directory and looking for the type of file that is an **ordinary file**. find displays only *exact* name matches. Therefore, we can use wildcards: `find / -type f -name apache2.*` looking for any extension after the filename *apache2*
+`find` *directory options expression*. ex: `find / -type f -name apache2` means search **apache** in the **root** directory and looking for the type of file that is an **ordinary file**. find displays only *exact* name matches. We can use wildcards: `find / -type f -name apache2.*` looking for any extension after the filename *apache2*
 
 Filtering with **grep**
 
@@ -140,7 +140,55 @@ Granting ownership to a group - ` chgrp groupName fileName`
   - Three sets (**owner**; **group**; **all other users**) of three characters (r, w, x)
   - If any r, w, or x is replaced with a dash (-), then the respective permission hasn’t been given
 
+Changing permissions - `chmod` - change mode
+
+- ON (1); OFF (0). So if `rwx` are all granted, this equates to **111**.
+
+| binary | Octal | r w x |
+| ------ | ----- | ----- |
+| 000    | 0     | - - - |
+| 001    | 1     | - - x |
+| 010    | 2     | - w - |
+| 011    | 3     | - w x |
+| 100    | 4     | r - - |
+| 101    | 5     | r - x |
+| 110    | 6     | r w - |
+| 111    | 7     | r w x |
+
+- Ex: all permissions for the **owner**, **group**, and **all users** - 7 7 7
+- Ex: `chmod 774 filename` 
+
+Changing Permissions with *UGO* (user, group, and others)
+
+- `-` removes a permission
+- `+` adds a permission
+- `=` sets a permission
+  - Ex: `chmod u-w filename` - remove (-) the write (w) permission from filename for the user (u).
+  - Ex: `chmod u+x,o+x filname` - add execute permission for the user and the other users only. (It seems that there must not be a space between `,` and `o+x` )
+
+Setting more secure default permissions with **Masks**
+
+- `umask` - unmask (3-digit decimal number corresponding to the 3 permissions digits)
+
+- | New files | New directories |                        |
+  | --------- | --------------- | ---------------------- |
+  | 666       | 777             | Linux base permissions |
+  | - 022     | - 022           | `umask`                |
+  | 644       | 755             | resulting permissions  |
+
+  - In Kali, and most Debian systems, the `umask` is preconfigured to 022, meaning the Kali default is 644 for files and 755 for directories.
+  - `umask` can be changed at `/home/username/.profile`
+
+Special Permissions
+
+- Granting temporary root permissions with **SUID** (set user ID)
+  - `chmod 4644 filename` - type a 4 before the regular permissions.
+- Granting the Root User’s Group Permissions **SGID** (set group ID)
+  - `chmod 2644 filename` - type a 2 before the regular permissions.
+
+## Process Management
 
 
-left at p.97 Changing Permissions
+
+left at p.107 process management
 
