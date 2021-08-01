@@ -188,7 +188,78 @@ Special Permissions
 
 ## Process Management
 
+### Viewing Processes:
+
+- `ps` - the Linux *kernel* assigns a unique **process ID (PID)** to each process sequentially.
+
+- `ps aux` - shows *all* processes running on the system for *all users*.
+
+Filtering by Process Name - `ps aux | grep programName`
+
+Finding the Greediest Processes with `top` - processes that use the most resources; refresh every 10 seconds. `h` or `?` for more commands; `q` for quit.
+
+### Changing Process Priority with `nice` 
+
+- “how nice you’ll be to other users.”
+- Values of `nice` range from -20 to +19; default is 0.
+- ![image-20210801152410475](C:\Users\chiatsekuo\AppData\Roaming\Typora\typora-user-images\image-20210801152410475.png)
+
+- Ex: `nice -n -10 /bin/slowprocess` - increment the `nice` value by -10. Meaning increasing its priority and allocating more resources.
+- Ex: `nice -n 10 /bin/fastprocess` - increment the `nice` value by 10. Meaning giving the `fastprocess` a lower priority.
+
+### Changing Process Priority with `renice`:
+
+- Values of `renice` range from -20 to +19
+- It takes *PID* instead of process name - Ex: `renice 19 6996` - 6996 is the PID
+- As with `nice`, only the root user can `renice` a process to a negative value to give it higher priority, but any user can be nice and reduce priority with `renice`.
+- Can also use  the`top` utility to change the `nice` value by pressing `r` with the PID and the `nice` value.
+
+### Killing Process
+
+`kill-signal PID` - signal flag is optional. It defaults to SIGTERM.
+
+|         |      |                                                              |
+| ------- | ---- | ------------------------------------------------------------ |
+| SIGHUP  | 1    | Hang-up (HUP). It stops the process and restarts it with the same PID |
+| SIGINT  | 2    | Interrupt (INT). (a weak kill signal that isn’t guaranteed to work) |
+| SIGQUIT | 3    | *core dump*. It terminates the process and saves the process in the current working directory to a file named *core*. |
+| SIGTERM | 15   | *Termination*. It is the `kill` command’s default kill signal. |
+| SIGKILL | 9    | Absolute kill. It forces the process to stop by sending the process’s resources to a special device, `/dev/null`. |
+
+- Ex: `kill -1 6996` or `kill -9 6996`
+- `killall -9 zombieprocess` - if we don’t know the process’s ID, just enter the process name.
+
+### Running Processes in the Background
+
+- Ex: `leafpad newscript &` - Now, when the text editor opens, the terminal returns a new command prompt so we can enter other commands while also editing the *newscript*.
+
+### Moving a Process to the foreground
+
+`fg 1234` - `fg` means foreground and `1234` means PID.
+
+### Scheduling Processes
+
+- `at` - scheduling a job to run once at some point in the future
+- `crond` - scheduling tasks to occur every day, week, or month.
+
+| Time format          |
+| -------------------- |
+| at 7:20pm            |
+| at 7:20pm June 25    |
+| at noon              |
+| at noon June 25      |
+| at tomorrow          |
+| at now + 20 minutes  |
+| at now + 10 hours    |
+| at now + 5 days      |
+| at now + 3 weeks     |
+| at 7:20pm 06/25/2019 |
+
+- Ex: `at 7:20am`, then `at` goes into interactive mode. Now enter the command to be executed at that specific time.
+
+## MANAGING USER ENVIRONMENT VARIABLES
 
 
-left at p.107 process management
+
+left at p.119 MANAGING USER ENVIRONMENT VARIABLES
 
