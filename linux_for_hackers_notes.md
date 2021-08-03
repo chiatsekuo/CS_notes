@@ -259,7 +259,40 @@ Finding the Greediest Processes with `top` - processes that use the most resourc
 
 ## MANAGING USER ENVIRONMENT VARIABLES
 
+2 types of variables - shell & environment
 
+Viewing all default environment variables - `env`
+
+Viewing all environment variables - `set | more` or `set`
+
+Filtering for particular variables - Ex: `set | grep HISTSIZE`
+
+Changing variable values for a Session - Ex: `HISTSIZE=0` - No commands being stored in the history file.
+
+Save a copy of all environment variables (backup purpose)- `set> ~/valueofAll`
+
+Making variable value changes permanent - Ex: `HISTSIZE=0` then `export HISTSIZE`
+
+Changing Shell Prompt: (useful when having shells on multiple systems)
+
+- The **PS1** variable holds
+  -  `\u` - the name of the current user
+  -  `\h` - the hostname
+  - `\W` - the base name of the current working directory
+- Ex: `PS1=“The New Prompt: #"`, then optionally `export PS1`
+
+Changing **PATH**:
+
+- check which directories are stored in the PATH variable - `echo $PATH`
+
+**Adding to the PATH variable**: (to execute the *newinstalledtool* everywhere)
+
+- Ex: `PATH=$PATH:/root/newinstalledtool`
+
+Create a User-Defined variable:
+
+- Ex: `NEWVARIABLE=“the new variable value”`
+- delete the variable - `unset NEWVARIABLE`
 
 left at p.119 MANAGING USER ENVIRONMENT VARIABLES
 
