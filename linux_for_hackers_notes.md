@@ -294,5 +294,28 @@ Create a User-Defined variable:
 - Ex: `NEWVARIABLE=“the new variable value”`
 - delete the variable - `unset NEWVARIABLE`
 
-left at p.119 MANAGING USER ENVIRONMENT VARIABLES
+## Bash Scripting
+
+Shell - an interface between the user & the OS. Ex: the Korn shell, the Z shell, the C shell, and the **Bourne-again shell (bash)**.
+
+Creating a script:
+
+- *Shebang* - `#! /bin/bash`  - ensures that Bash will be used to interpret the script; also to indicate that you want the OS to use the bash shell interpreter.
+- setting execute permissions - `chmod 755 scriptName`
+- running the script - `./scriptName`
+
+Creating a script with user interaction (storing variables):
+
+- `read variableName`
+- `echo $variableName`
+
+## Compressing & Archiving
+
+
+
+
+
+left at p.143 
+
+
 
