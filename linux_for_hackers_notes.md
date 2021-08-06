@@ -352,7 +352,73 @@ Creating Bit-by-Bit or Physical Copies of Storage Devices
 
 `dd if=inputfile of=outputfile`
 
-left at p.151
+## Filesystem and Storage Device Management
+
+### `/dev` - the Device Directory
+
+| Device file Description |                        |
+| ----------------------- | ---------------------- |
+| sda                     | First SATA hard drive  |
+| sdb                     | Second SATA hard drive |
+| sdc                     | Third SATA hard drive  |
+| sdd                     | Fourth SATA hard drive |
+
+Drive Partitions:
+
+| Partition Description |                                                     |
+| --------------------- | --------------------------------------------------- |
+| sda1                  | The first partition (1) on the first (a) SATA drive |
+| sda2                  | The second (2) partition on the first (a) drive     |
+| sda3                  | The third (3) partition on the first (a) drive      |
+| sda4                  | The fourth (4) partition on the first (a) drive     |
+
+`fdisk -l`
+
+These 3 file types are not native to Linux systems:
+
+- HPFS (High Performance File System)
+
+- NTFS (New Technology File System)
+
+- exFAT (Extended File Allocation Table)
+
+Linux uses the ext (extended) filesystem
+
+Character & Block Devices
+
+- *c* stands for character devices. External devices that interact with the system by sending and receiving data character by character, such as mice or keyboards.
+- *b* stands for block devices. They communicate in blocks of data (multiple bytes at a time), such as hard drives and DVD drives. They require higher-speed data throughput.
+  - Ex: ![image-20210806153806233](C:\Users\chiatsekuo\AppData\Roaming\Typora\typora-user-images\image-20210806153806233.png)
+
+List Block Devices & Information with `lsblk`
+
+![image-20210806154008239](C:\Users\chiatsekuo\AppData\Roaming\Typora\typora-user-images\image-20210806154008239.png)
+
+### Mounting & Unmounting
+
+2 main mount points in Linux - `/mnt` and `/media`.
+
+Ex: `mount /dev/sdb1 /mnt` - to mount the new hard drive sdb1 at the `/mnt` directory.
+
+Unmount (eject for Mac or Windows) - Ex: `umount /dev/sdb1`
+
+### Monitoring Filesystems
+
+`df` - disk free
+
+### Checking for errors
+
+`fsck`  - filesystem check - It checks the filesystem for errors and repairs the damage. One must unmount the drive before running a filesystem check.
+
+- Ex: `umount /dev/sdb1` then `fsck -p /dev/sdb1`
+
+## The Logging System
+
+
+
+
+
+left at p.161
 
 
 
