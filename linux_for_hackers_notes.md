@@ -311,11 +311,48 @@ Creating a script with user interaction (storing variables):
 
 ## Compressing & Archiving
 
+lossy
 
+- effective in reducing file size, but lose the integrity of the information. Good for graphics, video, and audio files like *.mp3, .mp4, .png, and .jpg*. 
+- High compression ratio
 
+lossless: cares about integrity of information
 
+**Tarring** files together (archive, tar file, or tarball):
 
-left at p.143 
+- Assume we have 3 .txt files (text1, text2, and text3). We can compress them by `tar -cvf texts.tar text1 text2 text3` . Here,  the `c` option means create, `v` lists the files that `tar` is dealing with, and `f` means write to the following files. 
+- Display the files without extracting them - `tar -tvf texts.tar`
+- Extract the files - `tar -xvf texts.tar`
+- If any extracted file already exists, `tar` will remove the existing file and replace it with the extracted file
+
+**Compressing** files
+
+- `gzip` - `.tar.gz` or `.tgz` - falls in between.
+- `bzip2` - `.tar.bz2` - the slowest but the smallest
+- `compress` - `.tar.z` - the fastest but larger
+
+Compressing with **gzip** (GNU zip) 
+
+- `gzip texts.*` , or just `gzip texts.tar`. It’ll replace the `.tar` file by `.tar.gz`
+- `gunzip texts.*` to unzip
+
+Compressing with **bzip2**
+
+- `bzip2 texts.*`
+- `bunzip2 texts.*`
+
+Compressing with **compress**
+
+- `compress texts.*`
+- `uncompress texts.*`
+
+Creating Bit-by-Bit or Physical Copies of Storage Devices
+
+`dd` makes a bit-by-bit copy of a file, a filesystem, or even an entire hard drive. For forensic investigations.
+
+`dd if=inputfile of=outputfile`
+
+left at p.151
 
 
 
