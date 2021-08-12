@@ -414,11 +414,59 @@ Unmount (eject for Mac or Windows) - Ex: `umount /dev/sdb1`
 
 ## The Logging System
 
+### The rsyslog Logging Daemon
+
+`rsyslog`,  `syslog`, or `syslog-ng` are used on different distros of Linux.
+
+- The `rsyslog` configuration file - `/etc/rsyslog.conf`
+
+- The `rsyslog` Logging **Rules**
+
+  - format - `facility.priority			action`. **Facility** means whatever software is generating the log, the **priority** determines what kind of messages to log for that program, and the **action** references the location where the log will be sent.
+
+  - *Facility*
+
+    - | valid codes for the `facility` keyword |                                  |
+      | -------------------------------------- | -------------------------------- |
+      | auth/ authpriv                         | Security/ authorization messages |
+      | cron                                   | Clock daemons                    |
+      | daemon                                 | Other daemons                    |
+      | kern                                   | Kernel messages                  |
+      | lpr                                    | Printing system                  |
+      | mail                                   | Mail system                      |
+      | user                                   | Generic user-level messages      |
+
+  - *Priority*
+
+    - | valid codes for `priority` (italic codes are deprecated) |
+      | -------------------------------------------------------- |
+      | debug                                                    |
+      | info                                                     |
+      | notice                                                   |
+      | *warning*                                                |
+      | *warn*                                                   |
+      | *error*                                                  |
+      | *err*                                                    |
+      | crit                                                     |
+      | alert                                                    |
+      | *emerg*                                                  |
+      | *panic*                                                  |
+
+### Automatically cleaning up logs with `logrotate`
+
+Log rotation - regularly archiving log files by moving them to some other location. The archived will get cleaned up after a specified period of time. See `/etc/logrotate.conf`.
+
+- See more on `man logrotate`
+
+### Remaining Stealthy
+
+- Removing Evidence - `shred` - delete the file and overwrite it several times. By default, `shred` overwrites 4 times.
+  - Ex: shred the log files in `/var/log/auth.log` 10 times: `shred -f -n 10 /var/log/auth/log.*`
+- Disabling Logging - `service servicename start|stop|restart`. Ex: `service rsyslog stop`.
 
 
 
-
-left at p.161
+left at p.171
 
 
 
