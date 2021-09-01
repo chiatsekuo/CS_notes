@@ -464,9 +464,57 @@ Log rotation - regularly archiving log files by moving them to some other locati
   - Ex: shred the log files in `/var/log/auth.log` 10 times: `shred -f -n 10 /var/log/auth/log.*`
 - Disabling Logging - `service servicename start|stop|restart`. Ex: `service rsyslog stop`.
 
+## Using & Abusing Services
+
+- service - an application running in the background waiting to be used.
+
+### Starting, Stopping, and Restarting Services
+
+- Ex: `service apache2 start`, `service apache2 stop`, and `service apache2 restart` (usually after making changes to the configuration of a service).
+
+### Creating an HTTP Web Server with the Apache Web Server
+
+**LAMP** - Linux, Apache, MySQL, and PHP or Perl
+
+WAMP - for windows.
+
+- Adding HTML at `/var/www/html/index.html`
+
+### OpenSSH and the Raspberry Spy Pi
+
+secure shell - authentication (access list) + encryption. Replace the telnet.
+
+(p.176)
+
+### Extracting Information from MySQL
+
+- *Maria* is a fork of MySQL
+- Start - `service mysql start`, then `mysql -u root -p`.
+- Some SQL commands - `select`, `union`, `insert`, `update`, and `delete`.
+- Check users in MySQL system - `select user, host, password from mysql.user;` 
+- Show databases - `show databases;`
+- Start using the database *mysql* - `use mysql;`
+- PostgreSQL
+
+## Becoming Secure and Anonymous
+
+### The Onion Router System (Tor)
+
+### Proxy Servers
+
+- proxy chain
+- setting proxies in the config file - `/etc/proxychains.conf`
+- adding more proxies
+- dynamic chaining
+- random chaining
+
+### Virtual Private Networks (VPN)
 
 
-left at p.171
+
+
+
+left at p.204
 
 
 
